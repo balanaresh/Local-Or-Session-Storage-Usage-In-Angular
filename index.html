@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Session / Local Storage Example</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script src="script.js"></script>
+	<style>
+		table.border{width:500px;text-align:left;border-collapse: collapse;}
+		table.border td,table.border th{border:1px solid #000;padding: 10px;margin: 0;}
+	</style>
+</head>
+<body ng-controller="MyCtrl">
+<form novalidate name="user" ng-submit="submit(user)" role="form">
+	<table>
+		<tbody>
+			<tr>
+				<th>Name:</th>
+				<td><input type="text" ng-model="user.name"></td>
+			</tr>
+			<tr>
+				<th>Email:</th>
+				<td><input type="email" ng-model="user.email"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Submit"></td>
+			</tr>
+		</tbody>
+	</table>
+	<div ng-if="sessionUsers.length > 0">
+	<h3>Current Session Users List</h3>
+	<table class="border">
+	<thead>
+		<tr>
+		<th>Name</th>
+		<th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="tuser in sessionUsers">
+			<td>{{tuser.name}}</td>
+			<td>{{tuser.email}}</td>
+		</tr>
+	</tbody>
+	</table>
+	</div>
+	<div ng-if="localUsers.length > 0">
+	<h3>All Users List</h3>
+	<table class="border">
+	<thead>
+		<tr>
+		<th>Name</th>
+		<th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="auser in localUsers">
+			<td>{{auser.name}}</td>
+			<td>{{auser.email}}</td>
+		</tr>
+	</tbody>
+	</table>
+	</div>
+</body>
+</html>
