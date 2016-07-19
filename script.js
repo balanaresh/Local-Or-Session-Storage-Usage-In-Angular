@@ -12,7 +12,6 @@
                 recentlyLoggedInUsers.push(data);
                 sessionService.setItem('recentlyLoggedInUsers', recentlyLoggedInUsers, 3600);
                 $scope.sessionUsers = recentlyLoggedInUsers;
-                //localService.removeItem('allUsers');
                 var allUsers = $scope.allUsers();
                 allUsers.push(data);
                 localService.setItem('allUsers', allUsers);
@@ -41,14 +40,14 @@
         }
     ])
 
-    // If you want to check user is logged in like facebook use localstorage
+    // If you want to check user is logged in like facebook use localStorage
 
     // If you want to promt user every time when they open the app use sessionStorage
 
     app.service('sessionStorageService', function() {
         return {
             setItem: function(key, value, expireTINS) { //TINS - Time In Seconds
-                // To Ovid Collision With Other Contributers variables Edd Suffix to your key
+                // To Avoid Collision With Other Contributers variables Add Suffix to your key
                 key = "ex_" + key;
                 return sessionStorage.setItem(key, angular.toJson(value));
             },
@@ -69,7 +68,7 @@
     app.service('localStorageService', function() {
         return {
             setItem: function(key, value) { //TINS - Time In Seconds
-                // To Ovid Collision With Other Contributers variables Edd Suffix to your key
+                // To Avoid Collision With Other Contributers variables Add Suffix to your key
                 key = "ex_" + key;
                 // If you are storing object convert it to json else place direct value
                 return localStorage.setItem(key, angular.toJson(value));
